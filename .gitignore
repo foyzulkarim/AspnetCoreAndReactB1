@@ -8,3 +8,6 @@
 /samples/WebApiApp/WebApiApp/obj
 /samples/WebApiApp/WebApiApp/bin/Debug/netcoreapp2.0
 /samples/WebApiApp/.vs
+/samples/MvcApp/MvcApp/bin/Debug/netcoreapp2.0
+/samples/MvcApp/.vs
+/samples/MvcApp/MvcApp/obj
