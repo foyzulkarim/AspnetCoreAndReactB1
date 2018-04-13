@@ -11,9 +11,13 @@ using Microsoft.Extensions.Options;
 
 namespace WebApiApp
 {
-    public class Startup
+    using System.Runtime.CompilerServices;
+
+    using Microsoft.AspNetCore.Http;
+
+    public class OurnewStartup
     {
-        public Startup(IConfiguration configuration)
+        public OurnewStartup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
@@ -35,6 +39,8 @@ namespace WebApiApp
             }
 
             app.UseMvc();
+
+            app.Run(x => x.Response.WriteAsync("hello world " + DateTime.Now));
         }
     }
 }
