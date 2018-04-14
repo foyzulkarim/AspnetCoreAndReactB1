@@ -6,13 +6,23 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApiApp.Controllers
 {
+    using Microsoft.Extensions.Logging;
+
     [Route("api/Values")]
     public class ValuesController : Controller
     {
+        private ILogger logger;
+
+        public ValuesController(ILoggerFactory factory)
+        {
+            this.logger = factory.CreateLogger<ValuesController>();
+        }
+
         // GET api/values
         [HttpGet]
         public IEnumerable<string> Get()
         {
+            this.logger.LogInformation("Hello. I am in values / get action ");
             return new string[] { "value1", "value2" };
         }
 
