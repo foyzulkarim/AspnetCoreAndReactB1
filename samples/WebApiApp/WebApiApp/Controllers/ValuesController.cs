@@ -3,16 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace WebApiApp.Controllers
 {
     [Route("api/Values")]
     public class ValuesController : Controller
     {
+        private ILogger _logger;
+
+        public ValuesController(ILoggerFactory factory)
+        {
+            _logger = factory.CreateLogger<ValuesController>();
+        }
+
         // GET api/values
         [HttpGet]
         public IEnumerable<string> Get()
         {
+            _logger.LogInformation("Hello values");
             return new string[] { "value1", "value2" };
         }
 
