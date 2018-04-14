@@ -40,7 +40,7 @@ namespace WebApiApp
             }
             
 
-            loggerFactory.AddFile("Logs/log-{Date}.txt");
+            //loggerFactory.AddFile("Logs/log-{Date}.txt");
 
             app.UseMvc();
 
