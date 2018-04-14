@@ -14,6 +14,9 @@ namespace WebApiApp
     using System.Runtime.CompilerServices;
 
     using Microsoft.AspNetCore.Http;
+    using Microsoft.EntityFrameworkCore;
+
+    using WebApiApp.Models;
 
     public class OurnewStartup
     {
@@ -27,6 +30,8 @@ namespace WebApiApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string connectionString = this.Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<AppDbContext>(options => { options.UseSqlServer(connectionString); });
             services.AddMvc();
         }
 
@@ -37,7 +42,7 @@ namespace WebApiApp
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            
             app.UseMvc();
 
             app.Run(x => x.Response.WriteAsync("hello world " + DateTime.Now));
