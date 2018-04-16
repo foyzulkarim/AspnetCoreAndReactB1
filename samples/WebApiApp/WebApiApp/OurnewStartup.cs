@@ -8,13 +8,15 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Serilog;
 
 namespace WebApiApp
 {
     using System.Runtime.CompilerServices;
 
     using Microsoft.AspNetCore.Http;
+    using Microsoft.EntityFrameworkCore;
+
+    using WebApiApp.Models;
 
     public class OurnewStartup
     {
@@ -28,20 +30,19 @@ namespace WebApiApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string connectionString = this.Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<AppDbContext>(options => { options.UseSqlServer(connectionString); });
             services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
             
-
-            //loggerFactory.AddFile("Logs/log-{Date}.txt");
-
             app.UseMvc();
 
             app.Run(x => x.Response.WriteAsync("hello world " + DateTime.Now));
