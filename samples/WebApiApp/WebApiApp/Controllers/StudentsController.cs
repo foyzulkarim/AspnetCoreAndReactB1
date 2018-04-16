@@ -17,9 +17,12 @@ namespace WebApiApp.Controllers
     {
         private ILogger _logger;
 
-        public StudentsController(ILoggerFactory factory)
+        private AppDbContext db;
+
+        public StudentsController(ILoggerFactory factory, AppDbContext db)
         {
             this._logger = factory.CreateLogger<StudentsController>();
+            this.db = db;
         }
 
         [HttpGet]
