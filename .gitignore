@@ -11,3 +11,10 @@
 /samples/MvcApp/MvcApp/bin/Debug/netcoreapp2.0
 /samples/MvcApp/.vs
 /samples/MvcApp/MvcApp/obj
+/lms/LmsApp/.vs/LmsApp/v15/Server/sqlite3
+/lms/LmsApp/LmsApp.Server/obj
+/lms/LmsApp/Model/obj
+/lms/LmsApp/Repository/obj
+/lms/LmsApp/RequestModel/obj
+/lms/LmsApp/Service/obj
+/lms/LmsApp/ViewModel/obj
