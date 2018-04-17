@@ -26,9 +26,24 @@ namespace WebApiApp.Controllers
 
         [HttpGet]
         [Route("GetStudents")]
-        public IActionResult GetStudents()
+        public IActionResult GetStudents(int skip = 0, int take = 10, string orderBy = "Name", bool isAscending = true)
         {
-            List<Student> students = _db.Students.ToList();
+            IQueryable<Student> dbStudents = _db.Students.AsQueryable();
+
+            // dbStudents.OrderBy(orderBy,isAscending);
+
+            if (orderBy == "Name")
+            {
+                dbStudents = isAscending ? dbStudents.OrderBy(x => x.Name).AsQueryable() : dbStudents.OrderByDescending(x => x.Name).AsQueryable();
+            }
+
+            if (orderBy == "Phone")
+            {
+                dbStudents = isAscending ? dbStudents.OrderBy(x => x.Phone).AsQueryable() : dbStudents.OrderByDescending(x => x.Phone).AsQueryable();
+            }
+            
+            dbStudents = dbStudents.Skip(skip).Take(take).AsQueryable();
+            List<Student> students = dbStudents.ToList();
             return this.Ok(students);
         }
 
@@ -36,7 +51,6 @@ namespace WebApiApp.Controllers
         [Route("SaveStudent")]
         public IActionResult SaveStudent([FromBody] Student student)
         {
-            // model validation
             student.Id = Guid.NewGuid().ToString();
             _db.Students.Add(student);
             _db.SaveChanges();
@@ -47,14 +61,12 @@ namespace WebApiApp.Controllers
         [Route("EditStudent")]
         public IActionResult EditStudent([FromBody] Student student)
         {
-            //Student dbStudent = _db.Students.Find(student.Id);
-            //if (dbStudent==null)
-            //{
-            //    return NotFound("Student not found");
-            //}
+            Student dbStudent = _db.Students.Find(student.Id);
+            if (dbStudent == null)
+            {
+                return NotFound("Student not found");
+            }
 
-            //dbStudent.Name = student.Name;
-            //dbStudent.Phone = student.Phone;
             _db.Students.Update(student);
             _db.SaveChanges();
             return Ok(true);
@@ -65,7 +77,7 @@ namespace WebApiApp.Controllers
         public IActionResult DeleteStudent(string id)
         {
             Student student = _db.Students.Find(id);
-            if (student==null)
+            if (student == null)
             {
                 return NotFound("Object not found");
             }
