@@ -27,7 +27,7 @@ namespace WebApiApp
                         {
                             builder.AddFile("C:/Temp/Logs/log-{Date}.txt");
                         })
-                .UseStartup<OurnewStartup>();
+                .UseStartup<Startup>();
             return webHostBuilder.Build();
         }
     }

@@ -18,9 +18,9 @@ namespace WebApiApp
 
     using WebApiApp.Models;
 
-    public class OurnewStartup
+    public class Startup
     {
-        public OurnewStartup(IConfiguration configuration)
+        public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
