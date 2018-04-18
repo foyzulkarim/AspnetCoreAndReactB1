@@ -18,3 +18,11 @@
 /lms/LmsApp/RequestModel/obj
 /lms/LmsApp/Service/obj
 /lms/LmsApp/ViewModel/obj
+/lms/LmsApp/Common/bin/Debug/netcoreapp2.0
+/lms/LmsApp/Common/obj
+/lms/LmsApp/LmsApp.Server/bin/Debug/netcoreapp2.0
+/lms/LmsApp/Model/bin/Debug/netcoreapp2.0
+/lms/LmsApp/Repository/bin/Debug/netcoreapp2.0
+/lms/LmsApp/RequestModel/bin/Debug/netcoreapp2.0
+/lms/LmsApp/Service/bin/Debug/netcoreapp2.0
+/lms/LmsApp/ViewModel/bin/Debug/netcoreapp2.0
