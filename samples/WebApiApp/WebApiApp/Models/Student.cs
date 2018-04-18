@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,17 +18,5 @@ namespace WebApiApp.Models
 
         [ForeignKey("DepartmentId")]
         public virtual Department Department { get; set; }
-    }
-
-    public class Department
-    {
-        public string Id { get; set; }
-
-        public string Name { get; set; }
-
-        public string Code { get; set; }
-
-        public virtual ICollection<Student> Students { get; set; }
-
     }
 }
