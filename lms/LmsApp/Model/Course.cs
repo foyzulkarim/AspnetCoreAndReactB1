@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Common;
+using Common.Model;
 
 namespace Model
 {
