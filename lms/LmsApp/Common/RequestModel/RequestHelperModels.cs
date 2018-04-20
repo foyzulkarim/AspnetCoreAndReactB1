@@ -97,7 +97,7 @@ namespace Common.RequestModel
 
         public IQueryable<TModel> GetOrderedData(IQueryable<TModel> queryable)
         {
-            queryable = queryable.Where(GetExpression());
+            queryable = queryable.Where(GetExpression()); // 2
             queryable = OrderByFunc<TModel>()(queryable);
             return queryable;
         }

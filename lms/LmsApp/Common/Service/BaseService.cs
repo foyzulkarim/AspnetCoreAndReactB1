@@ -79,15 +79,16 @@ namespace Common.Service
 
         public async Task<Tuple<List<TVm>, int>> SearchAsync(TRm request)
         {
-            var queryable = request.GetOrderedData(Repository.Get());
-            int count = queryable.Count();
-            queryable = request.SkipAndTake(queryable);
+            IQueryable<T> queryable = Repository.Get(); // 1
+            var orderedQueryable = request.GetOrderedData(queryable); //3
+            int count = orderedQueryable.Count();
+            var resultQueryable = request.SkipAndTake(orderedQueryable); //4
             if (request.IsIncludeParents)
             {
-                queryable = request.IncludeParents(queryable);
+                resultQueryable = request.IncludeParents(resultQueryable);
             }
             
-            var list = await queryable.ToListAsync();
+            var list = await resultQueryable.ToListAsync(); // 5
             List<TVm> vms = list.ConvertAll(CreateVmInstance);
             return new Tuple<List<TVm>, int>(vms, count);
         }
