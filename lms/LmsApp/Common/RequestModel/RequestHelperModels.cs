@@ -15,13 +15,13 @@ namespace Common.RequestModel
     }
 
 
-    public abstract class BaseRequestModel<TModel> where TModel : Entity
+    public  class BaseRequestModel<TModel> where TModel : Entity
     {
         protected const string All = "All";
 
         protected Expression<Func<TModel, bool>> ExpressionObj = e => true;
 
-        protected BaseRequestModel(string keyword, string orderBy= "Modified", string isAscending="False")
+        public BaseRequestModel(string keyword, string orderBy= "Modified", string isAscending="False")
         {
             if (string.IsNullOrEmpty(keyword))
             {
@@ -78,7 +78,11 @@ namespace Common.RequestModel
             var func = expr.Compile();
             return func;
         }
-        protected abstract Expression<Func<TModel, bool>> GetExpression();
+
+        protected virtual Expression<Func<TModel, bool>> GetExpression()
+        {
+            return ExpressionObj;
+        }
         //public abstract IQueryable<TModel> IncludeParents(IQueryable<TModel> queryable);
 
         public virtual IQueryable<TModel> IncludeParents(IQueryable<TModel> queryable)
@@ -86,7 +90,11 @@ namespace Common.RequestModel
             return queryable;
         }
 
-        public abstract Expression<Func<TModel, DropdownViewModel>> Dropdown();
+        public virtual Expression<Func<TModel, DropdownViewModel>> Dropdown()
+        {
+            return x => new DropdownViewModel() {Id = x.Id, Data = x};
+        }
+
         public IQueryable<TModel> GetOrderedData(IQueryable<TModel> queryable)
         {
             queryable = queryable.Where(GetExpression());
