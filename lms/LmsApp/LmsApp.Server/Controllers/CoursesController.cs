@@ -6,6 +6,7 @@ using Common.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Model;
+using Model.Repo;
 using RequestModel;
 using Service;
 using ViewModel;
@@ -17,14 +18,12 @@ namespace LmsApp.Server.Controllers
     public class CoursesController : Controller
     {
         private LmsDbContext _db;
-        private BaseRepository<Course> _repository;
         private CourseService _service;
 
-        public CoursesController(LmsDbContext db)
+        public CoursesController(LmsDbContext db, IGenericRepository<Course> repository)
         {
-            _db = db;
-            _repository = new BaseRepository<Course>(_db);
-            _service  = new CourseService(_repository);
+            _db = db;            
+            _service  = new CourseService(repository);
         }
 
         [HttpPost]

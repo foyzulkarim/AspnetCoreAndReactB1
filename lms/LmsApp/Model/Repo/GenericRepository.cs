@@ -1,18 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using Common.Model;
+using Common.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace Common.Repository
+namespace Model.Repo
 {
-    internal class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : Entity
-    {
-        public DbContext Db;
 
-        public BaseRepository(DbContext db)
+    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : Entity
+    {
+        public LmsDbContext Db;
+
+        public GenericRepository(LmsDbContext db)
         {
             Db = db;
         }

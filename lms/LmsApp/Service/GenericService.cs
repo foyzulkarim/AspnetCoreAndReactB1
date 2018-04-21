@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Common.Model;
 using Common.Repository;
 using Common.RequestModel;
 using Common.ViewModel;
 using Microsoft.EntityFrameworkCore;
+using Model.Repo;
 
-namespace Common.Service
+namespace Service
 {
-    internal class BaseService<T, TRm, TVm> where T : Entity where TRm : BaseRequestModel<T> where TVm : BaseViewModel<T>
+    public class GenericService<T, TRm, TVm> where T : Entity where TRm : BaseRequestModel<T> where TVm : BaseViewModel<T>
     {
-        protected IBaseRepository<T> Repository;
+        protected IGenericRepository<T> Repository;
 
-        public BaseService(IBaseRepository<T> repository)
+        public GenericService(IGenericRepository<T> repository)
         {
             Repository = repository;
         }
