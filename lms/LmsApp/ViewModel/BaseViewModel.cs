@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Common.Model;
+using Model;
 
-namespace Common.ViewModel
+namespace ViewModel
 {
     public class BaseViewModel<T> where T : Entity
     {

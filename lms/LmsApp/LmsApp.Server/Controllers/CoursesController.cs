@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Common.Repository;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Model;
 using Model.Repo;
@@ -17,13 +13,11 @@ namespace LmsApp.Server.Controllers
     [Route("api/Courses")]
     public class CoursesController : Controller
     {
-        private LmsDbContext _db;
-        private CourseService _service;
+        private GenericService<Course,CourseRequestModel,CourseViewModel> _service;
 
-        public CoursesController(LmsDbContext db, IGenericRepository<Course> repository)
-        {
-            _db = db;            
-            _service  = new CourseService(repository);
+        public CoursesController(IGenericService<Course,CourseRequestModel,CourseViewModel> service)
+        {            
+            _service = service as GenericService<Course, CourseRequestModel, CourseViewModel>;
         }
 
         [HttpPost]

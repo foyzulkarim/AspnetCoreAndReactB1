@@ -2,16 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Common.Model;
-using Common.Repository;
-using Common.RequestModel;
-using Common.ViewModel;
 using Microsoft.EntityFrameworkCore;
+using Model;
 using Model.Repo;
+using RequestModel;
+using ViewModel;
+using DropdownViewModel = RequestModel.DropdownViewModel;
 
 namespace Service
 {
-    public class GenericService<T, TRm, TVm> where T : Entity where TRm : BaseRequestModel<T> where TVm : BaseViewModel<T>
+    public interface IGenericService<T,TRm,TVm> where T : Entity where TRm : BaseRequestModel<T> where TVm : BaseViewModel<T>
+    {
+        bool Add(T entity);
+    }
+
+    public class GenericService<T, TRm, TVm> : IGenericService<T,TRm,TVm> where T : Entity where TRm : BaseRequestModel<T> where TVm : BaseViewModel<T> 
     {
         protected IGenericRepository<T> Repository;
 

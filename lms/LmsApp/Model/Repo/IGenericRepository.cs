@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Common.Model;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Model.Repo

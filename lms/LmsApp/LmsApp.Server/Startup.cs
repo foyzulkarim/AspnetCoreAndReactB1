@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Common.Repository;
-using Common.Service;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Model;
 using Model.Repo;
+using RequestModel;
+using Service;
+using ViewModel;
 
 namespace LmsApp.Server
 {
@@ -32,6 +27,7 @@ namespace LmsApp.Server
                 options.UseSqlServer(Configuration.GetConnectionString("LmsDbContext")));
             
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped(typeof(IGenericService<,,>), typeof(GenericService<,,>));
 
             services.AddMvc();
         }

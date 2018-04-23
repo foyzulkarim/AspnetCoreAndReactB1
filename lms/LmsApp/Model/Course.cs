@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Common;
-using Common.Model;
-
-namespace Model
+﻿namespace Model
 {
     public class Course : Entity
     {
