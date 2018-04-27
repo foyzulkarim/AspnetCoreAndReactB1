@@ -55,6 +55,11 @@ class MyApp extends Component {
                 <h3>Click on the name of the above students: </h3>
                 <Greeting student={this.state.student}/>
                 </div>
+                <div>
+                <p>
+                <a href="https://github.com/foyzulkarim/AspnetCoreAndReactB1/tree/master/samples/my-app" target="_blank">
+                https://github.com/foyzulkarim/AspnetCoreAndReactB1/tree/master/samples/my-app</a>
+                </p></div>
             </div>
         );
     }
