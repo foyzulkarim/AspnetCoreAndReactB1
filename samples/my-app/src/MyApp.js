@@ -19,7 +19,7 @@ class MyApp extends Component {
 
     handleStudentFilter(event){
         this.setState({keyword : event.target.value});
-        var result = this.state.students.filter(x=> x.name.startsWith(event.target.value));
+        var result = this.state.students.filter(x=> x.name.indexOf(event.target.value)!==-1);
         this.setState({filteredStudents : result});
     }
 
@@ -43,8 +43,7 @@ class MyApp extends Component {
 
         return (
             <div>
-                <StudentFilter handleFilter={this.handleStudentFilter}/>
-                <Greeting student={this.state.student}/>
+                <StudentFilter handleFilter={this.handleStudentFilter}/>                
                 <h2>Filter : {this.state.keyword}</h2>
                 <ul>
                     {this.state.filteredStudents.map((x)=>
@@ -52,6 +51,10 @@ class MyApp extends Component {
                        <Student studentObj={x} handleClick={this.handleClick}/>
                     </li>)}
                 </ul>                
+                <div>
+                <h3>Click on the name of the above students: </h3>
+                <Greeting student={this.state.student}/>
+                </div>
             </div>
         );
     }

@@ -19,7 +19,10 @@ class StudentFilter extends Component{
 
     render(){
         return(
-            <div>Search your names
+            <div>
+            <h2>
+            Search your names                
+                </h2>
                 <input type='text' onChange={this.props.handleFilter}/>
             </div>
             
