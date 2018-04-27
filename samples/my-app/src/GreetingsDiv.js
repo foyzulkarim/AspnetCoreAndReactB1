@@ -6,9 +6,11 @@ class GreetingsDiv extends Component{
     }
 
     render(){
+        console.log('i m in greetings. ',this.props.student);
+
         return(
-                <div>
-                    <h1>Hello guys</h1>
+                <div student={this.props.student}>
+                    <h1>Hello {this.props.student.name}</h1>
                 </div>
         );
     }

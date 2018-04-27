@@ -2,15 +2,17 @@ import React, { Component } from 'react'
 import Greeting from './GreetingsDiv'
 import Student from './Student';
 
-class MyApp extends Component {
+class MyApp extends Component {    
 
     constructor() {
         super();
+        this.state= { student : { name: "everyone"} };
         this.handleClick = this.handleClick.bind(this);
     }
 
     handleClick(x){
-        console.log(x);        
+        this.setState({student : x});
+        console.log(this.state);        
     }
 
     render() {
@@ -25,7 +27,7 @@ class MyApp extends Component {
 
         return (
             <div>
-                <Greeting/>
+                <Greeting student={this.state.student}/>
                 <h2>{values.length}</h2>
                 <ul>
                     {students.map((x)=>
