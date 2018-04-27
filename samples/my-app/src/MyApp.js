@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Greeting from './GreetingsDiv'
 import Student from './Student';
 
-
 class MyApp extends Component {
 
     constructor() {
@@ -33,9 +32,7 @@ class MyApp extends Component {
                     <li key={x.objectID}>                   
                        <Student studentObj={x} handleClick={this.handleClick}/>
                     </li>)}
-
-                </ul>
-                
+                </ul>                
             </div>
         );
     }
