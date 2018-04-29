@@ -26,35 +26,16 @@ class MyApp extends Component {
     }
 
     componentWillMount() {
-        // this.setState({
-        //     students: [
-        //         { objectID: "1", name: "Foyzul", course: "C#", color: 'yellow' },
-        //         { objectID: "2", name: "Fazley", course: "F#", color: 'lightgreen' },
-        //         { objectID: "3", name: "Badshah", course: "TS", color: 'lightblue' },
-        //     ]
-        // });
-        // this.setState({
-        //     filteredStudents: [
-        //         { objectID: "1", name: "Foyzul", course: "C#", color: 'yellow' },
-        //         { objectID: "2", name: "Fazley", course: "F#", color: 'lightgreen' },
-        //         { objectID: "3", name: "Badshah", course: "TS", color: 'lightblue' },
-        //     ]
-        // });
-    }
-
-    componentDidMount(){
-        // axios.get('https://jsonplaceholder.typicode.com/users')
-        // .then(res => {
-        //     const persons = res.data;
-        //     console.log(persons);
-        //     this.setState({ students : persons, filteredStudents : persons });
-        // })  
-        
         let r = new HttpRepo();
         console.log(r);
         let temp = r.get('https://jsonplaceholder.typicode.com/users').then( x=> {
             this.setState({students: x, filteredStudents : x});
         });
+    }
+
+    componentDidMount(){
+         
+       
     }
 
     render() {
