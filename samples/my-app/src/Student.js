@@ -12,7 +12,7 @@ class Student extends Component{
         };
 
        return(
-             <h3 style={myStyle} onClick={this.props.handleClick}> {s.name} </h3>
+             <h3 style={myStyle} onClick={()=>{this.props.handleClick(this.props.studentObj)}}> {s.name} </h3>
         ); 
        // here we will catch the variable. 
    }
