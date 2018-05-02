@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Repository\BaseRepository.cs" />
+    <Compile Remove="Repository\IBaseRepository.cs" />
+    <Compile Remove="RequestModel\RequestHelperModels.cs" />
+    <Compile Remove="Service\BaseService.cs" />
+    <Compile Remove="ViewModel\BaseViewModel.cs" />
+    <Compile Remove="ViewModel\DropdownViewModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.EntityFrameworkCore">
+      <HintPath>..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.entityframeworkcore\2.0.2\lib\netstandard2.0\Microsoft.EntityFrameworkCore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Repository\" />
+    <Folder Include="RequestModel\" />
+    <Folder Include="Service\" />
+    <Folder Include="ViewModel\" />
+  </ItemGroup>
+
+</Project>
