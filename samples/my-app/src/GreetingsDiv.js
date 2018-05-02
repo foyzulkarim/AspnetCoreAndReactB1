@@ -8,7 +8,7 @@ class GreetingsDiv extends Component{
     render(){
         return(
                 <div>
-                    <h1>Hello guys</h1>
+                    <h1>Hello {this.props.student.name}</h1>
                 </div>
         );
     }

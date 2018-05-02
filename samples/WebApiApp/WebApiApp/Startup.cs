@@ -32,6 +32,7 @@ namespace WebApiApp
         {
             string connectionString = this.Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<AppDbContext>(options => { options.UseSqlServer(connectionString); });
+            services.AddCors();
             services.AddMvc();
         }
 
@@ -42,7 +43,8 @@ namespace WebApiApp
             {
                 app.UseDeveloperExceptionPage();
             }
-            
+
+            app.UseCors(policy => policy.AllowAnyOrigin().AllowAnyMethod());
             app.UseMvc();
 
             app.Run(x => x.Response.WriteAsync("hello world " + DateTime.Now));
