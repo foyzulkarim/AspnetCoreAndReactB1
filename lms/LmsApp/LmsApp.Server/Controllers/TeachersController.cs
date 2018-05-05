@@ -17,7 +17,7 @@ namespace LmsApp.Server.Controllers
     {
         private IGenericService<Teacher, TeacherRequestModel, TeacherViewModel> _service;
 
-        public TeachersController(IGenericService<Teacher,TeacherRequestModel,TeacherViewModel> service)
+        public TeachersController(IGenericService<Teacher, TeacherRequestModel, TeacherViewModel> service)
         {
             _service = service;
         }
@@ -35,6 +35,13 @@ namespace LmsApp.Server.Controllers
         public IActionResult AddTeacher([FromBody] Teacher teacher)
         {
             teacher.Id = Guid.NewGuid().ToString();
+            teacher.Modified = DateTime.Now;
+            teacher.Created = DateTime.Now;
+            teacher.CreatedBy = "System";
+            teacher.ModifiedBy = "System";
+            teacher.IsActive = true;
+            teacher.IsDeleted = false;
+            teacher.IsDeleted = false;
 
             bool add = this._service.Add(teacher);
             return this.Ok(teacher.Id);

@@ -10,7 +10,10 @@ namespace ViewModel
         public TeacherViewModel(Teacher entity) : base(entity)
         {
             Name = entity.Name;
+            Phone = entity.Phone;
         }
+
+        public string Phone { get; set; }
 
         public string Name { get; set; }
     }

@@ -40,8 +40,8 @@ namespace RequestModel
             Request = new OrderByRequest
                           {
                               PropertyName = string.IsNullOrWhiteSpace(OrderBy) ? "Modified" : OrderBy,
-                              IsAscending = bool.Parse(isAscending)
-                          };
+                              IsAscending = string.IsNullOrWhiteSpace(isAscending) ? false : bool.Parse(isAscending)
+            };
 
         }
 

@@ -18,30 +18,12 @@ export default class StudentEntry extends Component {
     submitForm = (e) => {
         e.preventDefault();
         // http service     
-        const url = 'http://localhost:25697/api/teachers/add';
-
+        const url = 'api/teachers/add';
         let http = new HttpService();
         http.post(url, this.state).then(result => {
             console.log(result);
+            this.setState({name: '', phone: ''});
         });
-
-        // http.get(url).then(result => {
-        //     console.log(result);
-        // })
-
-        // var data = new FormData();
-        // data.append( "json", JSON.stringify(this.state ) );
-
-
-        // fetch( url, {   
-        //      method: "POST", 
-        //      body : this.state,
-        //      headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //       },            
-        //     }).then(function(res){ console.log(res); });
-
     }
 
 
