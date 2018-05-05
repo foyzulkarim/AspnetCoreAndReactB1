@@ -28,7 +28,7 @@ namespace LmsApp.Server
             
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped(typeof(IGenericService<,,>), typeof(GenericService<,,>));
-
+            services.AddCors();
             services.AddMvc();
         }
 
@@ -40,6 +40,7 @@ namespace LmsApp.Server
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(policy => policy.AllowAnyOrigin().AllowAnyHeader());
             app.UseMvc();
         }
     }

@@ -30,5 +30,14 @@ namespace LmsApp.Server.Controllers
             return Ok(items);
         }
 
+        [HttpPost]
+        [Route("Add")]
+        public IActionResult AddTeacher([FromBody] Teacher teacher)
+        {
+            teacher.Id = Guid.NewGuid().ToString();
+
+            bool add = this._service.Add(teacher);
+            return this.Ok(teacher.Id);
+        }
     }
 }
