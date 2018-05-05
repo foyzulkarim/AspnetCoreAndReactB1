@@ -23,12 +23,13 @@ namespace LmsApp.Server
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddDbContext<LmsDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("LmsDbContext")));
             
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped(typeof(IGenericService<,,>), typeof(GenericService<,,>));
-            services.AddCors();
+          
             services.AddMvc();
         }
 
@@ -40,7 +41,7 @@ namespace LmsApp.Server
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors(policy => policy.AllowAnyOrigin().AllowAnyHeader());
+            app.UseCors(policy => policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseMvc();
         }
     }

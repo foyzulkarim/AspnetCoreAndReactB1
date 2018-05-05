@@ -12,30 +12,35 @@ export default class StudentEntry extends Component {
     }
 
     handleInputChange(event) {
-        this.setState({ [event.target.name]: event.target.value });    
+        this.setState({ [event.target.name]: event.target.value });
     }
 
     submitForm = (e) => {
         e.preventDefault();
         // http service     
-        const url = 'http://localhost:25697/api/values';
-        
-        // let http = new HttpService();
-        // http.post(url,this.state).then(result=>{
+        const url = 'http://localhost:25697/api/teachers/add';
+
+        let http = new HttpService();
+        http.post(url, this.state).then(result => {
+            console.log(result);
+        });
+
+        // http.get(url).then(result => {
         //     console.log(result);
-        // });
-        var data = new FormData();
-        data.append( "json", JSON.stringify(this.state ) );
+        // })
+
+        // var data = new FormData();
+        // data.append( "json", JSON.stringify(this.state ) );
 
 
-        fetch( url, {   
-             method: "POST", 
-             body : this.state,
-             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-              },            
-            }).then(function(res){ console.log(res); });
+        // fetch( url, {   
+        //      method: "POST", 
+        //      body : this.state,
+        //      headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //       },            
+        //     }).then(function(res){ console.log(res); });
 
     }
 
