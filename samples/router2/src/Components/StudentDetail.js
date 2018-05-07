@@ -3,10 +3,9 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 export default class StudentDetail extends Component {
 
-    componentWillMount() {
+  componentWillMount(){
     
-    
-    }
+  }
 
     componentDidMount(){
         // we need the paramter

@@ -7,7 +7,7 @@ export default class MyApp extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <div class='row'>
           <Sidebar />
           <Main />
         </div>

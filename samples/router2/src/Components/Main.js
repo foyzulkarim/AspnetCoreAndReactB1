@@ -25,8 +25,8 @@ export default class Main extends Component {
     ];
 
     return (
-      <div>       
-        <div style={{ flex: 1, padding: "10px" }}>         
+      <div class="container-fluid"> 
+       <div class="side-body"> 
           {
               routes.map((route,index)=>(
                   <Route path={route.path} exact={route.exact} component={route.componentName}/>))
