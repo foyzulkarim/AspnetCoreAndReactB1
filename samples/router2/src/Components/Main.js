@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Students from "./Students";
 import Home from "./Home";
 import StudentDetail from "./StudentDetail";
+import Teachers from './Teachers';
 
 export default class Main extends Component {
   render() {
@@ -13,9 +14,9 @@ export default class Main extends Component {
         componentName: Home
       },       
       {
-        path: "/student-list",
+        path: "/teacher-list",
         exact: true,
-        componentName: Students
+        componentName: Teachers
       },
       {
         path: "/student-list/:id",

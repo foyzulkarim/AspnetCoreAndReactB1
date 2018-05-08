@@ -15,8 +15,12 @@ export default class Sidebar extends Component {
         text: "Home"
       },
       {
-        to: "/student-list",
-        text: "Students"
+        to: "/teacher-list",
+        text: "Teachers"
+      },
+      {
+        to: "/course-list",
+        text: "Courses"
       }
     ];
 
