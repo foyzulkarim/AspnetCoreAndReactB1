@@ -37,6 +37,12 @@ namespace RequestModel
                 IsAscending = isAscending;
             }
 
+            if (string.IsNullOrWhiteSpace(OrderBy))
+            {
+                OrderBy = "Modified";
+                isAscending = "False";
+            }
+
             Request = new OrderByRequest
                           {
                               PropertyName = string.IsNullOrWhiteSpace(OrderBy) ? "Modified" : OrderBy,
