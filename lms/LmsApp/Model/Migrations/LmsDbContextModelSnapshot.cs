@@ -76,6 +76,30 @@ namespace Model.Migrations
                     b.ToTable("Courses");
                 });
 
+            modelBuilder.Entity("Model.Department", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("Created");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<bool>("IsActive");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime>("Modified");
+
+                    b.Property<string>("ModifiedBy");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Department");
+                });
+
             modelBuilder.Entity("Model.Teacher", b =>
                 {
                     b.Property<string>("Id")
@@ -86,6 +110,8 @@ namespace Model.Migrations
                     b.Property<DateTime>("Created");
 
                     b.Property<string>("CreatedBy");
+
+                    b.Property<string>("DepartmentId");
 
                     b.Property<bool>("IsActive");
 
@@ -103,9 +129,18 @@ namespace Model.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DepartmentId");
+
                     b.HasIndex("Name");
 
                     b.ToTable("Teachers");
+                });
+
+            modelBuilder.Entity("Model.Teacher", b =>
+                {
+                    b.HasOne("Model.Department", "Department")
+                        .WithMany("Teachers")
+                        .HasForeignKey("DepartmentId");
                 });
 #pragma warning restore 612, 618
         }
