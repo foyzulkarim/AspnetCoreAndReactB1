@@ -4,6 +4,7 @@ import Students from "./Students";
 import Home from "./Home";
 import StudentDetail from "./StudentDetail";
 import Teachers from './Teachers';
+import TeacherDetail from './TeacherDetail'
 
 export default class Main extends Component {
   render() {
@@ -19,9 +20,9 @@ export default class Main extends Component {
         componentName: Teachers
       },
       {
-        path: "/student-list/:id",
+        path: "/teacher-list/:id",
         exact: true,
-        componentName: StudentDetail
+        componentName: TeacherDetail
       }
     ];
 
