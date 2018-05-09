@@ -4,7 +4,8 @@ import Students from "./Students";
 import Home from "./Home";
 import StudentDetail from "./StudentDetail";
 import Teachers from './Teachers';
-import TeacherDetail from './TeacherDetail'
+import TeacherDetail from './TeacherDetail';
+import TeacherEntry from './TeacherEntry';
 
 export default class Main extends Component {
   render() {
@@ -23,6 +24,11 @@ export default class Main extends Component {
         path: "/teacher-list/:id",
         exact: true,
         componentName: TeacherDetail
+      },
+      {
+        path:"/teacher-entry/:id",
+        exact: true, 
+        componentName : TeacherEntry
       }
     ];
 

@@ -25,6 +25,9 @@ export default class Teachers extends Component {
         <li><Link to={'/teacher-list/'+t.id}>{t.name}</Link> </li>
         )}
       </ul>
+      <div>
+        <a href="/teacher-entry">Add new teacher</a>
+      </div>
     </div>;
   }
 }

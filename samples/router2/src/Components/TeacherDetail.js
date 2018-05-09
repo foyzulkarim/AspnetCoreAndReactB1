@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import HttpService from './HttpService';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 export default class TeacherDetail extends Component {
 
@@ -23,6 +24,7 @@ componentDidMount(){
       <div>
         <h2>i am teacher detail</h2>
         <h3>Name : {this.state.teacher.name}</h3>
+        <Link to={'/teacher-entry/'+this.state.teacher.id}>Edit</Link> 
       </div>
     )
   }
