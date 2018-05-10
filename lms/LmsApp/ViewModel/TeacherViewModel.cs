@@ -11,7 +11,10 @@ namespace ViewModel
         {
             Name = entity.Name;
             Phone = entity.Phone;
+            DepartmentId = entity.DepartmentId;
         }
+
+        public string DepartmentId { get; set; }
 
         public string Name { get; set; }
 

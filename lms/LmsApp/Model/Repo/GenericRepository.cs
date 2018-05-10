@@ -22,7 +22,8 @@ namespace Model.Repo
         }
         public TEntity GetById(string id)
         {
-            return Db.Set<TEntity>().Find(id);
+            return Db.Set<TEntity>().AsNoTracking()
+                .First(x => x.Id == id);
         }
 
         public virtual bool Exists(string id)
@@ -32,7 +33,7 @@ namespace Model.Repo
 
         public virtual EntityEntry<TEntity> Add(TEntity entity)
         {
-            return Db.Set<TEntity>().Add(entity);            
+            return Db.Set<TEntity>().Add(entity);
         }
 
         public virtual IEnumerable<TEntity> Add(IEnumerable<TEntity> entities)
@@ -51,7 +52,7 @@ namespace Model.Repo
         public virtual bool Delete(string id)
         {
             TEntity entity = GetById(id);
-            if (entity!=null)
+            if (entity != null)
             {
                 Db.Set<TEntity>().Remove(entity);
             }

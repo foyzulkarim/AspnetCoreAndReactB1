@@ -24,8 +24,7 @@ class StudentFilter extends Component{
             Search your names                
                 </h2>
                 <input type='text' onChange={this.props.handleFilter}/>
-            </div>
-            
+            </div>            
         );
     }
 }
